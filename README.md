@@ -31,6 +31,7 @@ Windows:
 - Altere os valores username e password da connection string para os dados de acesso ao postgres
 - Selecione o profile docker-compose
 - Rode o projeto
+- Todas as migrações e testes são executados quando o projeto é executado
 ```
 
 ## ☕ CRUD Produtos
@@ -41,3 +42,19 @@ http://localhost:5002/Produto
 No CRUD é possivel adicionar, editar e remover produtos.
 ```
 
+## Docker (informações das imagens)
+
+```
+Docker está utilizando o docker-compose para compartilhamento de dados entre projetos.
+Executar o comando:
+docker-compose pull
+Busca todas as imagens necessárias do docker hub
+Postgres está sendo executado na porta 5432 e utilizando healthcheck para validar se está executando corretamente.
+A API valida se o postgres rodou corretamente antes de executar (postgres marcado como dependencia), tambem utiliza uma connection string para definir a conexão e roda nas portas 5000 e 5001
+O Front está rodando nas portas 5002 e 5003 e depende da api
+```
+
+## Documentação
+
+Documentação do projeto pode ser acessada no link:
+https://docs.google.com/document/d/1cTgdxn9lseBK94cdOCUOwDuTQaB26r7a7p68UfCYcwg/edit?usp=sharing
