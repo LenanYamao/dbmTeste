@@ -1,6 +1,6 @@
 services:
   testdbm:
-    image: testdbm:dev
+    image: lenan/dbmteste:dev
     container_name: "TestDbm"
     build:
       args:
@@ -35,7 +35,7 @@ services:
       com.microsoft.visualstudio.debuggee.killprogram: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet"
     tty: true
   testdbmfront:
-    image: testdbmfront:dev
+    image: lenan/dbmtestefront:dev
     container_name: "TestDbmFront"
     build:
       args:
@@ -71,7 +71,7 @@ services:
     tty: true
 
   testdbmunittest:
-    image: testdbmunittest:dev
+    image: lenan/dbmtesteunit:dev
     container_name: "TestDbmUnitTest"
     build:
       args:

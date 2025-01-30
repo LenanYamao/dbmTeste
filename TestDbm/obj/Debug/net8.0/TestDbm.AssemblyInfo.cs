@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TestDbm")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8329a87c19146f9bf5651213c4c4f00a32b00a88")]
 [assembly: System.Reflection.AssemblyProductAttribute("TestDbm")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TestDbm")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

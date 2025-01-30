@@ -109,3 +109,4 @@ E:\Visual Studio Projects\TestDbm\TestDbm\obj\Debug\net8.0\refint\TestDbm.dll
 E:\Visual Studio Projects\TestDbm\TestDbm\obj\Debug\net8.0\TestDbm.pdb
 E:\Visual Studio Projects\TestDbm\TestDbm\obj\Debug\net8.0\TestDbm.genruntimeconfig.cache
 E:\Visual Studio Projects\TestDbm\TestDbm\obj\Debug\net8.0\ref\TestDbm.dll
+E:\Visual Studio Projects\TestDbm\TestDbm\obj\Debug\net8.0\TestDbm.sourcelink.json

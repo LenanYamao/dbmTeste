@@ -26,14 +26,14 @@ services:
 
   #Unit tests
   testdbmunittest:
-    image: ${DOCKER_REGISTRY-}testdbmunittest
+    image: testdbmunittest:latest
     build:
       context: .
       dockerfile: TestDbmUnitTest/Dockerfile
 
   #API
   testdbm:
-    image: ${DOCKER_REGISTRY-}testdbm
+    image: testdbm:latest
     build:
       context: .
       dockerfile: TestDbm/Dockerfile
@@ -50,7 +50,7 @@ services:
 
   #Front
   testdbmfront:
-    image: ${DOCKER_REGISTRY-}testdbmfront
+    image: testdbmfront:latest
     build:
       context: .
       dockerfile: TestDbmFront/Dockerfile
