@@ -1,0 +1,63 @@
+volumes:
+  postgres_data:
+
+networks:
+  app_network:
+
+services:
+  #Database
+  postgresql_database:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=PostAdm!
+      - POSTGRES_DB=dbmTeste
+    ports:
+      - "5432:5432"
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U myuser -d mydb"]
+      interval: 5s
+      retries: 5
+    networks:
+      - app_network
+
+  #Unit tests
+  testdbmunittest:
+    image: ${DOCKER_REGISTRY-}testdbmunittest
+    build:
+      context: .
+      dockerfile: TestDbmUnitTest/Dockerfile
+
+  #API
+  testdbm:
+    image: ${DOCKER_REGISTRY-}testdbm
+    build:
+      context: .
+      dockerfile: TestDbm/Dockerfile
+    depends_on:
+      postgresql_database:
+        condition: service_healthy
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=postgresql_database;Port=5432;Database=dbmTeste;Username=username;Password=password
+    networks:
+      - app_network
+    ports:
+        - "5000:8080" 
+        - "5001:8081"
+
+  #Front
+  testdbmfront:
+    image: ${DOCKER_REGISTRY-}testdbmfront
+    build:
+      context: .
+      dockerfile: TestDbmFront/Dockerfile
+    depends_on:
+      - testdbm
+    networks:
+      - app_network
+    ports:
+        - "5002:8080"
+        - "5003:8081"

@@ -1,0 +1,52 @@
+﻿@model List<Produto>
+
+<h2>Produtos</h2>
+<a asp-controller="Produto" asp-action="Edit" class="btn btn-primary">Novo</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Preço</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var produto in Model)
+        {
+            <tr id="produto-row-@produto.Id">
+                <td>@produto.Nome</td>
+                <td>@produto.Descricao</td>
+                <td>@produto.Preco.ToString("C")</td>
+                <td>
+                    <a asp-controller="Produto" asp-action="Edit" asp-route-id="@produto.Id" class="btn btn-warning">Edit</a>
+                    <button class="btn btn-danger" data-id="@produto.Id" onclick="deleteProduct(@produto.Id)">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<script>
+    function deleteProduct(id) {
+        if (confirm('Deseja deletar o produto?')) {
+            $.ajax({
+                url: '@Url.Action("Delete", "Produto")',
+                type: 'POST',
+                data: { id: id },
+                success: function(response) {
+                    if (response.success) {
+                        $(`#produto-row-${id}`).remove();
+                    } else {
+                        alert("Error ao deletar.");
+                    }
+                },
+                error: function() {
+                    alert("Erro");
+                }
+            });
+        }
+    }
+</script>
